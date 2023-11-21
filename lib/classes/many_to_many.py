@@ -27,8 +27,10 @@ class NationalPark:
         return len([t.visitor for t in Trip.all if t.national_park == self])
     
     def best_visitor(self):
-        visitors = [t.visitor for t in self.trips()]
-        return max(set(visitors), key=visitors.count)
+        
+        all_visitors = [t.visitor for t in self.trips()]
+
+        return max(set(all_visitors), key=all_visitors.count) if all_visitors else None
 
 
 class Trip:
